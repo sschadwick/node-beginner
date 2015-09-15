@@ -1,3 +1,5 @@
+'use strict';
+
 var querystring = require("querystring"),
     fs = require("fs"),
     formidable = require("formidable");
@@ -34,7 +36,7 @@ function upload(response, request) {
     console.log("parsing done");
 
     //possible error on windows
-    fs.rename(files.upload, path, "/tmp/test.png", function(error) {
+    fs.rename(files.upload.path, "/tmp/test.png", function(error) {
       if (error) {
         fs.unlink("/tmp/test.png");
         fs.rename(files.upload.path, "/tmp/test.png");
